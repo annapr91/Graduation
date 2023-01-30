@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+{% load static %}
+{%block contacts%}
+<main class="container_size">
+<div class="info">
+    <div class="info_item">
+    <form  method="post">
+    {% csrf_token %}
+    {{ form.as_p  }}
+    <input type="submit" value="Submit">
+</form>
+</div>
+</div>
+    <div class="info_item">
+        <h3>Наши контакты</h3>
+        <h3>Департамент образования</h3>
+        <p>Эстония 6а</p>
+        <p>14785 Таллинн</p>
+        <p>372 5847589</p>
+        <p>haridus@gmail.com</p>
+    </div>
+</main>
+<
+{% endblock %}

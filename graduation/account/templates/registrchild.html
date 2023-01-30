@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+ 
+{% block content2 %}
+<h1>{{title}}</h1>
+ <main class="container_size">
+<div class="info">
+    <div class="info_item">
+<form action="{% url 'child' %}" method="POST" novalidate>
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Отправить</button>
+<!--    <p>-->
+<!--            <label>Введите имя</label><br>-->
+<!--            <input type="text" name="name" />-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            <label>Введите id_number</label><br>-->
+<!--            <input type="number" name="id_number" />-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            <label>Введите det_sads</label><br>-->
+<!--            <input type="text" name="det_sads" />-->
+<!--        </p>-->
+<!--        <p>-->
+<!--            <label>Введите surname</label><br>-->
+<!--            <input type="number" name="surname" />-->
+<!--        </p>-->
+<!--        <input type="submit" value="Сохранить" >-->
+<!--    </form>-->
+
+</form>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block building %}
+
+{%if myfilter.qs%}
+<div class="container px-4">
+      <div class="row gx-5">
+        <div class="col">
+<form method = "get" >
+    {{myfilter.form }}
+    <button type="submit">Фильтр </button>
+
+<!--    {% for obj in myfilter.qs %}-->
+<!--        {{ obj.name }} - ${{ obj.address }}<br />-->
+<!--    {% endfor %}&ndash;&gt;-->
+
+</form>
+
+    {%for obj in myfilter.qs%}
+        <h3><a href="{{ obj.get_absolute_url  }}">{{ obj.name }}</a> - ${{ obj.address }}</h3><br />
+
+    {%endfor%}
+{%else%}
+    {%for obj in object_list%}
+        {% include "search.html"%}
+    {%endfor%}
+{%endif%}
+{% endblock %}

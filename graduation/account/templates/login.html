@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+
+<div>
+    <form method="post">
+    {% csrf_token %}
+        <div class ="form-label" >
+            {{ form.as_p }}
+
+    <button type="submit">Войти</button>
+    <ul>
+<a href="{% url 'social:begin' 'google-oauth2' %}">Google</a>
+    </ul>
+<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+        </div>
+
+</div>
+
+
+{% endblock %}

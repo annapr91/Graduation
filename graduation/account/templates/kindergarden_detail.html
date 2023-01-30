@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{%block detail%}
+<div class="container px-4">
+  <div class="row gx-5">
+    <div class="col2">
+<h3>{{object.name}}</h3>
+<h3>{{object.address}}</h3>
+<h3>{{object.rayon}}</h3>
+        {%for ch in object.child_set.all%}
+        <h3>{{ch.name}}</h3>
+<!--        {%if object.pk == ch.pk%}-->
+<!--            <h3>{{ch.name}}</h3>-->
+<!--        {%endif%}-->
+        {%endfor%}
+{%endblock%}

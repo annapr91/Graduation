@@ -1,0 +1,47 @@
+{%extends 'base.html'%}
+{% load i18n %}
+
+ {%block main%}
+<main class="container_size">
+      <div class="container_pick ">
+        <h1 class="container_pick-titel">
+          Справочник <span> образовательных учреждений </span> <span> Таллинна</span> </span>
+        </h1>
+      </div>
+
+      <div class="info">
+        <div class="info_item">
+          <h3>Частные садики</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam cum nostrum reiciendis at autem, quidem optio voluptatum soluta ea dolores!</p>
+          <ul>
+            <li>{%trans "Таллинна"%}</li>
+            <li>{%trans "Таллинна"%}</li>
+            <li>{%trans "Таллинна"%}</li>
+            <li>{%trans "Таллинна"%}</li>
+          </ul>
+        </div>
+        <div class="info_item">
+          <h3>Государственные садики</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum nam rem non iure voluptatibus, esse cupiditate optio consectetur obcaecati odio, recusandae fugit enim sapiente, libero eum veritatis repellendus officiis officia.</p>
+          <ul>
+            <li>Lorem, ipsum dolor.</li>
+            <li>Lorem ipsum dolor sit.</li>
+            <li>Lorem, ipsum.</li>
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+          </ul>
+        </div>
+        <div class="info_item">
+          <h3>Lorem how you </h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, delectus.</p>
+          <ul>
+            <li>Контакты</li>
+            <li><a href="{% url 'contact'%}">Связаться с нами</a></li>
+            <li>Lorem, ipsum.</li>
+            <li>Lorem ipsum dolor sit amet consectetur.</li>
+          </ul>
+        </div>
+
+      </div>
+    </main>
+
+{% endblock%}
