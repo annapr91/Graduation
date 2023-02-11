@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Child, Kindergarden, KIDCHOICE
+from .models import Child, Kindergarden, KIDCHOICE, User
 
 
 # class KindergardenAdmin(admin.ModelAdmin):
@@ -22,5 +22,7 @@ class KindergardenAdmin(admin.ModelAdmin):
 admin.site.register(Child)
 # admin.site.register(Kindergarden)
 admin.site.register(KIDCHOICE)
-
+class UseAdmin(admin.ModelAdmin):
+    list_display = ('last_name','address', 'phone', 'email')
+admin.site.register(User,UseAdmin)
 

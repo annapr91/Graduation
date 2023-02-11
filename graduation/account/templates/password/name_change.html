@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Profile Page{% endblock title %}
+{% block content %}
+<div class="container px-4">
+  <div class="row gx-5">
+    <div class="col">
+    <div class="row my-3 p-3">
+        <img class="rounded-circle account-img" src="{{ user.profile.avatar.url }} " style="cursor: pointer;"/>
+    </div>
+    {% if user_form.errors %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <div id="form_errors">
+                {% for key, value in user_form.errors.items %}
+                    <strong>{{ value }}</strong>
+                {% endfor %}
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+    <div class="form-content">
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="small mb-1">Логин:</label>
+                            {{ user_form.username }}
+                        <label class="small mb-1">Имя:</label>
+                            {{ user_form.first_name }}
+                        <label class="small mb-1">Фамилия:</label>
+                            {{ user_form.last_name }}
+                        <label class="small mb-1">Почта:</label>
+                            {{ user_form.email }}
+                        <label class="small mb-1">Телефон:</label>
+                            {{ user_form.phone }}
+                        <label class="small mb-1">Адрес:</label>
+                            {{ user_form.address }}
+                    </div>
+                    <div class="p-3 border bg-light">
+                        <a href="password_change">Change Password</a>
+
+                    </div>
+
+
+            </div>
+            <br><br>
+            <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
+            <button type="reset" class="btn btn-dark btn-lg">Reset</button>
+        </form>
+    </div>
+    <table class="table">
+  <thead>
+    <tr>
+
+      <th scope="col">Имя</th>
+      <th scope="col">Фамилия</th>
+      <th scope="col">ID номер</th>
+        <th scope="col">Детский сад</th>
+        <th scope="col">Очередь</th>
+    </tr>
+  </thead>
+          <tbody class="table-group-divider">
+            {% for chil in data%}
+    <tr>
+
+        <td>{{chil.name}}</td>
+        <td>{{chil.surname}}</td>
+        <td>{{chil.id_number}}</td>
+          <td>{{chil.det_sads}}</td>
+        {%if chil.ochered is not None%}
+          <td>{{chil.ochered}}</td>
+        {%endif%}
+        {%endfor%}
+    </tr>
+</tbody>
+</table>
+{% endblock content %}

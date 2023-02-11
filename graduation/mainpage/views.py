@@ -47,10 +47,10 @@ class KidsKindergarden(ListView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['q'] = self.request.GET.get('q')
+        context['q'] = self.request.GET.get('q','Not found area of kindegarden')
+        print(context['q'] )
         context['myfilter']= KindFilter(self.request.GET,queryset=Kindergarden.objects.all())
-        print(context['myfilter'].qs)
-        print(context)
+        print( context['myfilter'])
         return context
 
     # def get_queryset(self):

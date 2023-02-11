@@ -1,22 +1,37 @@
+import re
+
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordResetForm
-from django.contrib.auth.models import User
+
 from django import forms
 from django.core.exceptions import ValidationError
 
-from .models import Child, Kindergarden
+from .models import Child, Kindergarden, User
 
 
 class RegisUserForm(UserCreationForm):
-    name = forms.CharField(label='Имя', widget=forms.TextInput(attrs={'class': 'form-input'}))
-    email = forms.EmailField(label='Почта', widget=forms.EmailInput(attrs={'class': 'form-input','placeholder': 'Почта'}))
-    username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class': 'form-input'}))
-    password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
-    password2 = forms.CharField(label='Повтор пароля', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+
+    first_name = forms.CharField(label=('Имя'), widget=forms.TextInput(attrs={'class': 'form-input'}))
+    last_name = forms.CharField(label=('Фамилия'), widget=forms.TextInput(attrs={'class': 'form-input'}))
+    email = forms.EmailField(label=('Почта'),
+                             widget=forms.EmailInput(attrs={'class': 'form-input', 'placeholder': 'Почта'}))
+    username = forms.CharField(label=('Логин'), widget=forms.TextInput(attrs={'class': 'form-input'}))
+    password1 = forms.CharField(label=('Пароль'), widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+    password2 = forms.CharField(label=('Повтор пароля'), widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+
+
+
     class Meta:
         model = User
-        fields = ('username', 'password1', 'password2','name','email')
+        fields = ('first_name','last_name','username','email', 'password1', 'password2')
 
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        if username == self.cleaned_data['last_name'] :
+            raise ValidationError('Usernane cant be the same as last_name')
+        elif username == self.cleaned_data['first_name']:
+            raise ValidationError('Usernane cant be the same as first_name')
 
+        return username
 class RegistrationKind(forms.ModelForm):
     error_messages = {
         "password_mismatch": ("The name type should be str not int."),
@@ -82,3 +97,50 @@ class PasswordReset(PasswordResetForm):
     class Meta:
         model = User
         fields = ['username', 'email']
+
+
+class UserNameChange(forms.ModelForm):
+    error_messages = {
+        'address_mismatch': ('Пожалуйста,проверьте адрес  - улица,дом/кварира.'),
+        'phone_mismatch': (' Пожалуйста,проверьте номер телефона (8 цифр).')
+    }
+    username = forms.CharField(label='Ваше имя', max_length=255)
+    first_name = forms.CharField(label='Фамилия', max_length=255)
+    last_name = forms.CharField(label='Фамилия', max_length=255)
+    email = forms.EmailField(label='Ваша почта', max_length=255,widget=forms.TextInput(
+        attrs={'class': 'form-input', 'placeholder': ('почта')})),
+    phone = forms.IntegerField(localize=False, label=('Телефон'),
+                               widget=forms.NumberInput(attrs={'class': 'form-input', 'placeholder': ('телефон')}))
+    address = forms.CharField(label=('Адрес'), widget=forms.TextInput(
+        attrs={'class': 'form-input', 'placeholder': ('улица,дом/квартира')}))
+
+
+    def clean_address(self):
+        data = self.cleaned_data['address']
+        c = re.match(r'^[а-яА-яa-zA-Z]+,\d+/\d+$', data)
+        print(c)
+        if not c:
+            raise ValidationError(
+                         self.error_messages['address_mismatch'],
+                         code='address_mismatch',
+                     )
+        return data
+
+    def clean_phone(self):
+        phone = self.cleaned_data['phone']
+        if len(str(phone))!=8:
+            raise ValidationError(
+                self.error_messages['phone_mismatch'],
+                code='phone_mismatch',
+            )
+
+        return phone
+
+
+    class Meta:
+        model = User
+        fields = ['last_name','first_name','username', 'email', 'phone', 'address']
+
+
+
+

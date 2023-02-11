@@ -1,5 +1,7 @@
+from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm, PasswordResetForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import LoginView, PasswordChangeView
@@ -12,10 +14,10 @@ from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
-from django.views.generic import CreateView
+from django.views.generic import CreateView, FormView
 from requests import request
 
-from .forms import RegisUserForm, RegistrationKind, LoginUserForm, PasswordReset
+from .forms import RegisUserForm, RegistrationKind, LoginUserForm, PasswordReset, UserNameChange
 from .models import Child, Kindergarden
 from mainpage.forms import PasswordChangingForm
 
@@ -82,12 +84,19 @@ class LoginUser(LoginView):
 
 
 def mydata(request):
-    id = request.user.id
-    child = Child.objects.filter(roditeli_id=id)
-    # data=User.objects.get(id=id)
-    print(request.user.username)
-    print(child)
-    return render(request, 'mydata.html', {'data': child})
+    child= Child.objects.filter(roditeli_id=request.user)
+    if request.method == 'POST':
+        user_form  = UserNameChange(request.POST, instance=request.user)
+        if user_form.is_valid():
+            user_form.save()
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect(to='mydata')
+    else:
+        user_form = UserNameChange(instance=request.user)
+
+
+    return render(request, 'password/name_change.html',{'data': child,'user_form': user_form })
+
 
 
 def password_reset_request(request):
@@ -121,3 +130,26 @@ def password_reset_request(request):
     password_reset_form = PasswordReset()
     return render(request=request, template_name="password/password_reset.html",
                   context={"password_reset_form": password_reset_form})
+
+
+# class NameChange(LoginRequiredMixin, FormView):
+#     form = UserNameChange
+#     template_name = 'password/name_change.html'
+#     reverse_lazy= '/'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         return context
+
+
+# def name_change(request):
+#     if request.method == 'POST':
+#         user_form  = UserNameChange(request.POST, instance=request.user)
+#         if user_form.is_valid():
+#             user_form.save()
+#             messages.success(request, 'Your profile is updated successfully')
+#             return redirect(to='mydata')
+#     else:
+#         user_form = UserNameChange(instance=request.user)
+#
+#     return render(request, 'password/name_change.html',{'user_form': user_form})

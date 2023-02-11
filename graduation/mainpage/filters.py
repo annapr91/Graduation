@@ -10,9 +10,10 @@ BOOLEAN_CHOICES = (('false', 'False'), ('true', 'True'),)
 
 
 class KindFilter(django_filters.FilterSet):
-    name = django_filters.ModelChoiceFilter(queryset=Kindergarden.objects.all())
+    name = django_filters.CharFilter(lookup_expr='icontains')
     addition = django_filters.ModelMultipleChoiceFilter(queryset=KIDCHOICE.objects.all(),widget=CheckboxSelectMultiple )
-    rayon = django_filters.CharFilter(label='rayon')
+    # area = django_filters.ModelChoiceFilter(queryset=Kindergarden.objects.all())
+    # area = django_filters.ModelChoiceFilter(field_name = 'area',queryset=Kindergarden.objects.all())
     class Meta:
         model = Kindergarden
-        fields = ['name', 'rayon','addition']
+        fields = ['name','area','addition','free_places']
