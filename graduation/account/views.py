@@ -90,7 +90,7 @@ def mydata(request):
         if user_form.is_valid():
             user_form.save()
             messages.success(request, 'Your profile is updated successfully')
-            return redirect(to='mydata')
+            return redirect('/')
     else:
         user_form = UserNameChange(instance=request.user)
 

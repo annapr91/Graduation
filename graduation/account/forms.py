@@ -136,6 +136,14 @@ class UserNameChange(forms.ModelForm):
 
         return phone
 
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        if username == self.cleaned_data['last_name'] :
+            raise ValidationError('Usernane cant be the same as last_name')
+        elif username == self.cleaned_data['first_name']:
+            raise ValidationError('Usernane cant be the same as first_name')
+
+        return username
 
     class Meta:
         model = User
