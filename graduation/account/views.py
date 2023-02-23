@@ -2,7 +2,8 @@ from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm, PasswordResetForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.core.exceptions import ValidationError
@@ -21,7 +22,7 @@ from .forms import RegisUserForm, RegistrationKind, LoginUserForm, PasswordReset
 from .models import Child, Kindergarden
 from mainpage.forms import PasswordChangingForm
 
-
+User = get_user_model()
 # Create your views here.
 class RegisterUser(CreateView):
     form_class = RegisUserForm
@@ -108,6 +109,7 @@ def password_reset_request(request):
             print(data)
             print(data_name)
             associated_users = User.objects.filter(email=data, username=data_name)
+            print(associated_users)
             if associated_users.exists():
                 for user in associated_users:
                     subject = "Password Reset Requested"

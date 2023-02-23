@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block title %}Profile Page{% endblock title %}
 {% block content %}
 <div class="container px-4">
@@ -23,55 +24,79 @@
 
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <div class="form-row">
-                <div class="col-md-5">
+            <div class="form-row container_size">
+                <div class="form_container container_size">
                     <div class="form-group">
-                        <label class="small mb-1">Логин:</label>
+                        <div>
+                            <p>
+                                 <label class="small mb-1">{% trans 'Логин'%}</label>
                             {{ user_form.username }}
-                        <label class="small mb-1">Имя:</label>
+                            </p>
+                          <p>
+                               <label class="small mb-1">{% trans 'Имя'%}</label>
                             {{ user_form.first_name }}
-                        <label class="small mb-1">Фамилия:</label>
+                          </p>
+
+                        </div>
+                       <div>
+                           <p>
+                                <label class="small mb-1">{% trans 'Фамилия'%}</label>
                             {{ user_form.last_name }}
-                        <label class="small mb-1">Почта:</label>
+                           </p>
+                            <p>
+                                <label class="small mb-1">{% trans 'Почта'%}</label>
                             {{ user_form.email }}
-                        <label class="small mb-1">Телефон:</label>
+                            </p>
+
+                       </div>
+                      <div>
+                          <p>
+                               <label class="small mb-1">{% trans 'Телефон'%}</label>
                             {{ user_form.phone }}
-                        <label class="small mb-1">Адрес:</label>
+                          </p>
+                         <p>
+                             <label class="small mb-1">{% trans 'Адрес'%}</label>
                             {{ user_form.address }}
+                         </p>
+
+                      </div>
+
                     </div>
-                    <div class="p-3 border bg-light">
-                        <a href="password_change">Change Password</a>
+                    <div class="p-3 border bg-light  change_password">
+                        <a href="password_change">{% trans 'Изменить пароль'%}</a>
 
                     </div>
 
 
             </div>
             <br><br>
-            <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
-            <button type="reset" class="btn btn-dark btn-lg">Reset</button>
+            <button type="submit" class="btn btn-dark btn-lg butn_sbmit">{% trans 'Сохранить изминения'%}</button>
+
         </form>
     </div>
+        <h3 class="btn btn-primary titel_my_children">{% trans 'Мои дети'%}</h3>
     <table class="table">
   <thead>
+
     <tr>
 
-      <th scope="col">Имя</th>
-      <th scope="col">Фамилия</th>
-      <th scope="col">ID номер</th>
-        <th scope="col">Детский сад</th>
-        <th scope="col">Очередь</th>
+      <th scope="col" class="tabel_data">{% trans 'Имя'%}</th>
+      <th scope="col" class="tabel_data">{% trans 'Фамилия'%}</th>
+      <th scope="col" class="tabel_data">{% trans 'ID номер'%}</th>
+        <th scope="col" class="tabel_data">{% trans 'Детский сад'%}</th>
+        <th scope="col" class="tabel_data">{% trans 'Очередь'%}</th>
     </tr>
   </thead>
           <tbody class="table-group-divider">
             {% for chil in data%}
     <tr>
 
-        <td>{{chil.name}}</td>
-        <td>{{chil.surname}}</td>
-        <td>{{chil.id_number}}</td>
-          <td>{{chil.det_sads}}</td>
+        <td class="tabel_data">{{chil.name}}</td>
+        <td class="tabel_data">{{chil.surname}}</td>
+        <td class="tabel_data">{{chil.id_number}}</td>
+          <td class="tabel_data">{{chil.det_sads}}</td>
         {%if chil.ochered is not None%}
-          <td>{{chil.ochered}}</td>
+          <td class="tabel_data">{{chil.ochered}}</td>
         {%endif%}
         {%endfor%}
     </tr>

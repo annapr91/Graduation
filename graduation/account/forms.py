@@ -4,19 +4,19 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, Pass
 
 from django import forms
 from django.core.exceptions import ValidationError
-
+from django.utils.translation import gettext_lazy as _
 from .models import Child, Kindergarden, User
 
 
 class RegisUserForm(UserCreationForm):
 
-    first_name = forms.CharField(label=('Имя'), widget=forms.TextInput(attrs={'class': 'form-input'}))
-    last_name = forms.CharField(label=('Фамилия'), widget=forms.TextInput(attrs={'class': 'form-input'}))
-    email = forms.EmailField(label=('Почта'),
+    first_name = forms.CharField(label=_(u'Имя'), widget=forms.TextInput(attrs={'class': 'form-input'}))
+    last_name = forms.CharField(label=_(u'Фамилия'), widget=forms.TextInput(attrs={'class': 'form-input'}))
+    email = forms.EmailField(label=_(u'Почта'),
                              widget=forms.EmailInput(attrs={'class': 'form-input', 'placeholder': 'Почта'}))
-    username = forms.CharField(label=('Логин'), widget=forms.TextInput(attrs={'class': 'form-input'}))
-    password1 = forms.CharField(label=('Пароль'), widget=forms.PasswordInput(attrs={'class': 'form-input'}))
-    password2 = forms.CharField(label=('Повтор пароля'), widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+    username = forms.CharField(label=_(u'Логин'), widget=forms.TextInput(attrs={'class': 'form-input'}))
+    password1 = forms.CharField(label=_(u'Пароль'), widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+    password2 = forms.CharField(label=_(u'Повтор пароля'), widget=forms.PasswordInput(attrs={'class': 'form-input'}))
 
 
 
@@ -27,21 +27,21 @@ class RegisUserForm(UserCreationForm):
     def clean_username(self):
         username = self.cleaned_data['username']
         if username == self.cleaned_data['last_name'] :
-            raise ValidationError('Usernane cant be the same as last_name')
+            raise ValidationError(_(u'Логин не может быть таким же как Фамилия.'))
         elif username == self.cleaned_data['first_name']:
             raise ValidationError('Usernane cant be the same as first_name')
 
         return username
 class RegistrationKind(forms.ModelForm):
     error_messages = {
-        "password_mismatch": ("The name type should be str not int."),
+        "password_mismatch": _(u"The name type should be str not int."),
         "surname_mismatch": ("The surname type should be str not int."),
         "id_number_mismatch":("Длинна Ид-номера должна состоять из 8 символов.Пожалуйста,проверьте")
     }
-    name = forms.CharField(label='Имя', widget=forms.TextInput(attrs={'class': 'form-input','placeholder': 'Имя'}))
-    surname = forms.CharField(label='Фамилия', widget=forms.TextInput(attrs={'class': 'form-input'}))
-    det_sads = forms.ModelChoiceField(queryset= Kindergarden.objects.all(),label='Детский сад')
-    id_number = forms.CharField(label='Ид', widget=forms.NumberInput(attrs={'class': 'form-control'}))
+    name = forms.CharField(label=_(u'Имя'), widget=forms.TextInput(attrs={'class': 'form-input','placeholder': 'Имя'}))
+    surname = forms.CharField(label=_(u'Фамилия'), widget=forms.TextInput(attrs={'class': 'form-input'}))
+    det_sads = forms.ModelChoiceField(queryset= Kindergarden.objects.all(),label=_(u'Детский сад'))
+    id_number = forms.CharField(label=_(u'Ид'), widget=forms.NumberInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = Child
@@ -82,7 +82,7 @@ class RegistrationKind(forms.ModelForm):
             )
         return id_number
 class LoginUserForm(AuthenticationForm):
-    username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class': 'form-input'}))
+    username = forms.CharField(label=_(u'Логин'), widget=forms.TextInput(attrs={'class': 'form-input'}))
     # password1 = forms.CharField(label='Пароль1', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
 
 
@@ -91,8 +91,8 @@ class LoginUserForm(AuthenticationForm):
         fields = ['username', 'password1']
 
 class PasswordReset(PasswordResetForm):
-    email=forms.EmailField(label='Почта', widget=forms.EmailInput(attrs={'class': 'form-input','placeholder': 'Почта'}))
-    username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Имя'}))
+    email=forms.EmailField(label=_(u'Почта'), widget=forms.EmailInput(attrs={'class': 'form-input','placeholder': _(u'Почта')}))
+    username = forms.CharField(label=_(u'Логин'), widget=forms.TextInput(attrs={'class': 'form-input', 'placeholder': _(u'Логин')}))
 
     class Meta:
         model = User
@@ -104,37 +104,43 @@ class UserNameChange(forms.ModelForm):
         'address_mismatch': ('Пожалуйста,проверьте адрес  - улица,дом/кварира.'),
         'phone_mismatch': (' Пожалуйста,проверьте номер телефона (8 цифр).')
     }
-    username = forms.CharField(label='Ваше имя', max_length=255)
-    first_name = forms.CharField(label='Фамилия', max_length=255)
-    last_name = forms.CharField(label='Фамилия', max_length=255)
-    email = forms.EmailField(label='Ваша почта', max_length=255,widget=forms.TextInput(
-        attrs={'class': 'form-input', 'placeholder': ('почта')})),
-    phone = forms.IntegerField(localize=False, label=('Телефон'),
-                               widget=forms.NumberInput(attrs={'class': 'form-input', 'placeholder': ('телефон')}))
-    address = forms.CharField(label=('Адрес'), widget=forms.TextInput(
-        attrs={'class': 'form-input', 'placeholder': ('улица,дом/квартира')}))
+    username = forms.CharField(label=_(u'Ваше имя'), max_length=255)
+    first_name = forms.CharField(label=_(u'Фамилия'), max_length=255)
+    last_name = forms.CharField(label=_(u'Фамилия'), max_length=255)
+    email = forms.EmailField(label=_(u'Ваша почта'), max_length=255,widget=forms.TextInput(
+        attrs={'class': 'form-input', 'placeholder': _(u'почта')})),
+    phone = forms.IntegerField(localize=False, required=False,label=_(u'Телефон'),
+                               widget=forms.NumberInput(attrs={'class': 'form-input', 'placeholder': _(u'телефон')}))
+    address = forms.CharField(label=_(u'Адрес'), required=False,widget=forms.TextInput(
+        attrs={'class': 'form-input', 'placeholder': _(u'улица,дом/квартира')}))
 
 
     def clean_address(self):
         data = self.cleaned_data['address']
-        c = re.match(r'^[а-яА-яa-zA-Z]+,\d+/\d+$', data)
-        print(c)
-        if not c:
-            raise ValidationError(
-                         self.error_messages['address_mismatch'],
-                         code='address_mismatch',
-                     )
-        return data
+        if not data:
+            return data
+        else:
+            c = re.match(r'^[а-яА-яa-zA-Z]+,\d+/\d+$', data)
+            print(c)
+            if not c:
+                raise ValidationError(
+                             self.error_messages['address_mismatch'],
+                             code='address_mismatch',
+                         )
+            return data
 
     def clean_phone(self):
         phone = self.cleaned_data['phone']
-        if len(str(phone))!=8:
-            raise ValidationError(
-                self.error_messages['phone_mismatch'],
-                code='phone_mismatch',
-            )
+        if not phone:
+            return phone
+        else:
+            if len(str(phone))!=8:
+                raise ValidationError(
+                    self.error_messages['phone_mismatch'],
+                    code='phone_mismatch',
+                )
 
-        return phone
+            return phone
 
     def clean_username(self):
         username = self.cleaned_data['username']

@@ -1,13 +1,16 @@
 from django import forms
 from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth import get_user_model
 
+
+User = get_user_model()
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=20,widget=forms.TextInput(attrs={'class':'form-control'}), label=_(u'Имя'))
     subject = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class':'form-control'}), label=_(u'Тема'))
     sender = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control'}),label=_(u'Отправитель'))
-    message = forms.CharField(widget=forms.Textarea(attrs={ 'placeholder': 'message'}), )
+    message = forms.CharField(widget=forms.Textarea(attrs={ 'placeholder': _(u'сообщение')}),label=_(u'Сообщение') )
 
     class Meta:
         model = User

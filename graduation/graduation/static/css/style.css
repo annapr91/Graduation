@@ -70,11 +70,11 @@ header {
 }
 
 .header-container form {
-  flex-basis: 20%;
+  flex-basis: 5%;
   display: flex;
 }
 .nav {
-  flex-basis: 40%;
+  flex-basis: 60%;
   display: flex;
   justify-content: space-between;
 }
@@ -92,12 +92,51 @@ button[type='submit'] {
   font-size: 1.5rem;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
+  margin: auto;
 }
 
 button[type='submit']:hover {
   background-color: rgb(108, 141, 170);
 }
+.form-group{
 
+display:flex;
+flex-direction:column;
+gap:15px;
+margin-bottom:30px;
+}
+.form-group div{
+display:flex;
+justify-content: space-between;
+gap:20px;
+
+}
+.form-group div p{
+flex-basis:50%;
+display:flex;
+}
+.form_container{
+width:70%;
+}
+.form-group label{
+font-size:18px;
+margin-right:10px;
+}
+
+input[type="text"],input[type="email"],input[type="number"]{
+font-size:15px;
+flex-basis:75%;
+}
+.butn_sbmit{
+margin: auto;
+    text-align: center;
+    display: block;
+}
+.change_password{
+margin:auto;
+width:40%;
+text-align:center;
+}
 .container_pick {
   margin: 2rem auto;
   width: 100%;
@@ -118,6 +157,11 @@ button[type='submit']:hover {
   border-radius: 0.6rem;
 }
 
+.tabel_data{
+font-size:15px;}
+.titel_my_children{
+font-size:15px;
+}
 .container_pick-titel {
   padding: 2rem 3rem;
   font-weight: 300;
@@ -201,6 +245,10 @@ fieldset img {
   margin-top: 8rem;
   padding-left: 2rem;
 }
+.info_middle{
+display:flex;
+justify-content:center;
+}
 
 .info_item {
   display: grid;
@@ -225,12 +273,63 @@ fieldset img {
 .info_item ul li:hover {
   color: rgb(6, 44, 74);
 }
-
+.form_registration{
+display: flex;
+    width: 100%;
+    justify-content: center;
+}
 .form-label {
-display: inline-block;
-    min-width: 150px;
-    vertical-align: top;}
+display: flex;
+flex-direction:column;
+    width: 600px;
+    vertical-align: top;
+    background-color: #f4f6f7 ;
+    padding:30px;
 
+        }
+        .form-label p{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        text-align:center;
+        margin-bottom:30px;
+        }
+
+         .form-label p:first-child{
+         margin-top:30px;
+         }
+        .form-label p label{
+        font-size:15px;
+        font-weight:bold;
+        margin-right:10px;
+        color:rgba(0, 114, 206, 1);}
+.form-label input[type="text"],input[type="password"]{
+flex-basis:70%;
+padding:5px;
+background-color:white;
+}
+
+.registretion_ul{
+text-align:center;
+padding:10px 0;}
+
+.registretion_ul span{
+color:rgba(0, 114, 206, 1);
+text-decoration:underline;
+
+font-size:13px;
+margin-right:10px;
+}
+.registretion_ul a{
+color:red;
+
+font-size:17px;
+}
+
+.forgot_password a{
+color:rgba(0, 114, 206, 1);
+text-decoration:underline;
+}
 @media screen and (min-width: 900px) {
   .header__nav--hamburger {
     display: none;
@@ -250,7 +349,7 @@ display: inline-block;
     display: block;
   }
 
-  form {
+form{
     visibility: hidden;
     display: none;
   }

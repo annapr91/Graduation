@@ -1,25 +1,18 @@
 
-
+{% load i18n %}
 {% block search %}
 
-<div class="container px-4">
-      <div class="row gx-5">
-        <div class="col2">
-            <thead>
+  <tr>
 
-            <tr>
-            <tbody class="table-group-divider">
-                <a href="{{ obj.get_absolute_url  }}"><th  scope="col"><h3>{{obj.name}}</h3></th></a>
-               <th scope="col"><h3>{{obj.address}} - {{obj.area}}</h3></th>
-
-
+            <td class="tabel_data"><a href="{{ obj.get_absolute_url  }}">{{obj.name}}</a></td>
+            <td class="tabel_data">{{obj.address}}</td>
+            <td class="tabel_data">{{obj.area}}</td>
+            <td class="tabel_data">+372-{{obj.phone_number}}</td>
+              <td class="tabel_data">{{obj.num_register_child}}</td>
 
 
         </tr>
-            </tbody>
-      </thead>
-         </div>
-     </div>
-    </div>
+
+    </tbody>
 
 {% endblock %}

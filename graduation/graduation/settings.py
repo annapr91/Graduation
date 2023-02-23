@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django_filters',
 'multiselectfield',
     'crispy_forms',
+'parler',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
@@ -130,6 +131,17 @@ LANGUAGES = (
 
 )
 
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'ru',},
+        {'code': 'en',},
+
+    ),
+    'default': {
+        'fallbacks': ['ru'],          # defaults to PARLER_DEFAULT_LANGUAGE_CODE
+        'hide_untranslated': False,   # the default; let .active_translations() return fallbacks too.
+    }
+}
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -167,3 +179,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 LOGIN_REDIRECT_URL='/'
+

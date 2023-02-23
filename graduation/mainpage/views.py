@@ -1,9 +1,11 @@
 from django.contrib.auth import logout
+from django.core.exceptions import ValidationError
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.views.generic import DetailView, ListView
+from django_filters.views import FilterView
 
 from .forms import ContactForm
 from django.conf import settings
@@ -15,7 +17,14 @@ from .filters import KindFilter
 
 # Create your views here.
 def first(request):
-    return render(request, 'first_page.html')
+
+    value1 = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam cum nostrum reiciendis at autem, quidem optio voluptatum soluta ea dolores!\n" \
+             "Lorem ipsum dolor sit amet consectetur adipisicing elit"
+    value2= "Kindergarden Aperiam cum nostrum reiciendis at autem, quidem optio voluptatum soluta ea dolores!\n" \
+             "Lorem ipsum dolor sit amet consectetur adipisicing elit"
+        # "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam cum nostrum reiciendis at autem, quidem optio voluptatum soluta ea dolores!\n" \
+        #     "Lorem ipsum dolor sit amet consectetur adipisicing elit"
+    return render(request, 'first_page.html',{'value1': value1,'value2': value2})
 
 
 def contact(request):
@@ -62,14 +71,16 @@ class Search(ListView):
     template_name = 'buildings.html'
 
     def get_queryset(self):
-        return Kindergarden.objects.filter(name__icontains=self.request.GET.get("q"))
+        search_query= self.request.GET.get("q")
+        if search_query:
+            Kindergarden.objects.filter (translations__name__contains = search_query)
+            return Kindergarden.objects.filter(translations__name__contains=self.request.GET.get("q"))
+        else:
+            return Kindergarden.objects.all()
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args,**kwargs)
-        try:
-            context['q']= self.request.GET.get('q')
-        except Exception:
-            raise 404
+        print(context)
         return context
 
 class KindergardenInfo(DetailView):
@@ -83,5 +94,10 @@ class KindergardenInfo(DetailView):
         context=super().get_context_data(**kwargs)
         context['child']= Child.objects.filter()
         return context
+
+
+def school(request):
+    return render(request, "info_school.html")
+
 
 

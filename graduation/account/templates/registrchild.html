@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
- 
+ {% load i18n %}
 {% block content2 %}
 <h1>{{title}}</h1>
  <main class="container_size">
-<div class="info">
+<div class=" info_middle">
     <div class="info_item">
 <form action="{% url 'child' %}" method="POST" novalidate>
     {% csrf_token %}
     {{ form.as_p }}
 
-    <button type="submit">Отправить</button>
+    <button type="submit">{%  trans 'Отправить' %}</button>
 <!--    <p>-->
 <!--            <label>Введите имя</label><br>-->
 <!--            <input type="text" name="name" />-->

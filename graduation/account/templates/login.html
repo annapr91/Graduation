@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
- 
+  {% load i18n %}
 {% block content %}
 
 <div>
-    <form method="post">
+    <form method="post" class="container_size form_registration">
     {% csrf_token %}
         <div class ="form-label" >
             {{ form.as_p }}
 
-    <button type="submit">Войти</button>
-    <ul>
-<a href="{% url 'social:begin' 'google-oauth2' %}">Google</a>
+    <button type="submit">{% trans "Войти "%}</button>
+    <ul class="registretion_ul">
+        <span>Sing up </span><a href="{% url 'social:begin' 'google-oauth2' %}">Google</a>
     </ul>
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+<p class="forgot_password"><a href="{% url 'password_reset' %}">{% trans "Забыли пароль? "%}</a></p>
         </div>
 
 </div>

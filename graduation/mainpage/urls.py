@@ -9,6 +9,6 @@ path('logout/', logout_view, name ='logout'),
 path('buildings/', KidsKindergarden.as_view(), name ='buildings'),
 path('search/', Search.as_view(), name ='search'),
 path('search/<int:sad_id>/', KindergardenInfo.as_view(), name ='sad'),
-
+path('school/', school, name = 'school')
 
 ]

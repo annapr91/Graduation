@@ -2,18 +2,21 @@
 from PIL import Image
 from django.contrib.auth.models import  AbstractUser
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from django.urls import reverse
 
+
 from multiselectfield import MultiSelectField
+from parler.models import TranslatableModel, TranslatedFields
 
 
 # Create your models here.
 
 class User(AbstractUser):
-    address = models.CharField(max_length=150,verbose_name='Адрес', unique=True)
-    phone = models.IntegerField(blank=True, null=True,verbose_name='Номер телефон')
+    address = models.CharField(max_length=150,verbose_name='Адрес', blank=True)
+    phone = models.IntegerField(blank=True, null=True, verbose_name='Номер телефон')
     email = models.EmailField(blank=True,verbose_name='Имейл')
 
     def __str__(self):
@@ -26,7 +29,8 @@ class User(AbstractUser):
 
 
 class KIDCHOICE(models.Model):
-    choice = models.CharField(max_length=154, unique=True)
+    choice=models.CharField(max_length=154, unique=True)
+
 
     def __str__(self):
         return self.choice
@@ -36,21 +40,29 @@ class KIDCHOICE(models.Model):
         verbose_name_plural = 'Допалнительные кружки'
 
 _MAX_SIZE = 300
-class Kindergarden(models.Model):
-    AREA = [
-        ('Lasnamae', 'Lasnamae'),
-        ('Kristiine', 'Kristiine'),
-        ('Noome', 'Noome')
-    ]
-    name = models.CharField(max_length=20,verbose_name='Имя')
-    address = models.CharField(max_length=255,verbose_name='Адрес')
-    photo = models.ImageField(upload_to="photos/%Y/%m/%d/", blank=True, max_length=50,verbose_name='Фото')
-    area = models.CharField(max_length=30,choices=AREA,verbose_name='Район')
-    phone_number = models.CharField(max_length=20,verbose_name='Номер телефона')
-    num_free_places = models.IntegerField(default=0, null=True,verbose_name='Количество свободных мест')
-    num_register_child = models.IntegerField(default=0, null=True,verbose_name='Кол-во заргис. детей')
-    addition = models.ManyToManyField(KIDCHOICE,verbose_name='Доп. кружки')
-    free_places = models.BooleanField(default=True,verbose_name='Свободные места')
+class Kindergarden(TranslatableModel):
+    AREA =  (
+                   ('Lasnamäe', 'Lasnamäe'),
+               ('Kristiine ', 'Kristiine '),
+               ('Nõmme', 'Nõmme'),
+                   ('Mustamäe', 'Mustamäe'),
+                   ('Pirita', 'Pirita'),
+                   ('Põhja-Tallinna', 'Põhja-Tallinna'),
+               )
+
+    free_places = models.BooleanField(default=True, verbose_name=_('Свободные места'))
+    area = models.CharField(max_length=30, choices=AREA, verbose_name=_('Район'))
+    translations = TranslatedFields(
+        name=models.CharField(max_length=20, verbose_name=_('Имя')),
+        address = models.CharField(max_length=255, verbose_name=_('Адрес')),
+        photo = models.ImageField(upload_to="photos/%Y/%m/%d/", blank=True, max_length=50, verbose_name=_('Фото')),
+        phone_number = models.CharField(max_length=20, verbose_name=_('Номер телефона')),
+        num_free_places = models.IntegerField(default=0, null=True, verbose_name=_('Количество свободных мест')),
+        num_register_child = models.IntegerField(default=0, null=True, verbose_name=_('Кол-во заргис. детей')),
+        addition = models.ManyToManyField(KIDCHOICE, verbose_name=_('Доп. кружки'), blank=True),
+
+    )
+
 
 
     def save(self, *args, **kwargs):
@@ -68,15 +80,12 @@ class Kindergarden(models.Model):
             if max_size > _MAX_SIZE or max_size < _MAX_SIZE:
                 image = Image.open(filepath)
                 print(filepath)
-                # resize - безопасная функция, она создаёт новый объект, а не
-                # вносит изменения в исходный, поэтому так
                 image = image.resize(
                     (round(width / max_size * _MAX_SIZE),
                      round(height / max_size * _MAX_SIZE)),
                     Image.ANTIALIAS
                 )
                 print(image)
-                # И не забыть сохраниться
                 image.save(filepath)
 
     def get_absolute_url(self):
@@ -94,8 +103,8 @@ class Child(models.Model):
     name = models.CharField(max_length=20)
     surname = models.CharField(max_length=20)
     id_number = models.CharField(max_length=20)
-    roditeli = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Родители')
-    det_sads = models.ForeignKey('Kindergarden', on_delete=models.CASCADE, verbose_name='Детские сады')
+    roditeli = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('Родители'))
+    det_sads = models.ForeignKey('Kindergarden', on_delete=models.CASCADE, verbose_name=_('Детские сады'))
     ochered = models.IntegerField(default=None, null=True)
 
     def __str__(self):

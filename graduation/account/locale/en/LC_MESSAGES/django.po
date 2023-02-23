@@ -1,0 +1,194 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-20 13:53+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\account\forms.py:13 .\account\forms.py:41 .\account\models.py:56
+#: .\account\templates\mydata.html:8
+#: .\account\templates\password\name_change.html:32
+#: .\account\templates\password\name_change.html:61
+msgid "Имя"
+msgstr "Name"
+
+#: .\account\forms.py:14 .\account\forms.py:42 .\account\forms.py:108
+#: .\account\forms.py:109 .\account\templates\mydata.html:21
+#: .\account\templates\password\name_change.html:34
+#: .\account\templates\password\name_change.html:62
+msgid "Фамилия"
+msgstr "Surname"
+
+#: .\account\forms.py:15 .\account\forms.py:94
+#: .\account\templates\password\name_change.html:36
+msgid "Почта"
+msgstr "Email"
+
+#: .\account\forms.py:17 .\account\forms.py:85 .\account\forms.py:95
+#: .\account\templates\password\name_change.html:30
+msgid "Логин"
+msgstr "Login"
+
+#: .\account\forms.py:18
+msgid "Пароль"
+msgstr "Password"
+
+#: .\account\forms.py:19
+msgid "Повтор пароля"
+msgstr "Repeat password"
+
+#: .\account\forms.py:30
+msgid "Логин не может быть таким же как Фамилия."
+msgstr "Username cant be the same as your Lastname"
+
+#: .\account\forms.py:37
+msgid "The name type should be str not int."
+msgstr ""
+
+#: .\account\forms.py:43 .\account\templates\mydata.html:23
+#: .\account\templates\password\name_change.html:64
+msgid "Детский сад"
+msgstr "Kindergarten"
+
+#: .\account\forms.py:44
+msgid "Ид"
+msgstr "ID"
+
+#: .\account\forms.py:107
+msgid "Ваше имя"
+msgstr "Your name"
+
+#: .\account\forms.py:110
+msgid "Ваша почта"
+msgstr "Your email"
+
+#: .\account\forms.py:111
+msgid "почта"
+msgstr "email"
+
+#: .\account\forms.py:112 .\account\templates\password\name_change.html:38
+msgid "Телефон"
+msgstr "Phone"
+
+#: .\account\forms.py:113
+msgid "телефон"
+msgstr "phone"
+
+#: .\account\forms.py:114 .\account\models.py:57
+#: .\account\templates\password\name_change.html:40
+msgid "Адрес"
+msgstr "Address"
+
+#: .\account\forms.py:115
+msgid "улица,дом/квартира"
+msgstr "street, house/appartment"
+
+#: .\account\models.py:53
+msgid "Свободные места"
+msgstr "Free places"
+
+#: .\account\models.py:54
+msgid "Район"
+msgstr "Area"
+
+#: .\account\models.py:58
+msgid "Фото"
+msgstr "Photo"
+
+#: .\account\models.py:59
+#, fuzzy
+#| msgid "телефон"
+msgid "Номер телефона"
+msgstr "phone"
+
+#: .\account\models.py:60
+#, fuzzy
+#| msgid "Свободные места"
+msgid "Количество свободных мест"
+msgstr "Free places"
+
+#: .\account\models.py:61
+msgid "Кол-во заргис. детей"
+msgstr "Number of registrated children"
+
+#: .\account\models.py:62
+msgid "Доп. кружки"
+msgstr "Addition"
+
+#: .\account\models.py:106
+msgid "Родители"
+msgstr "Parents"
+
+#: .\account\models.py:107
+#, fuzzy
+#| msgid "Детский сад"
+msgid "Детские сады"
+msgstr "Kindergarten"
+
+#: .\account\templates\login.html:11
+msgid "Войти "
+msgstr "Login"
+
+#: .\account\templates\login.html:15
+#, fuzzy
+#| msgid "Изменить пароль"
+msgid "Забыли пароль? "
+msgstr "Change password"
+
+#: .\account\templates\mydata.html:15
+#: .\account\templates\password\name_change.html:55
+msgid "Мои дети"
+msgstr "My children"
+
+#: .\account\templates\mydata.html:20
+msgid "ghfg"
+msgstr ""
+
+#: .\account\templates\mydata.html:22
+#: .\account\templates\password\name_change.html:63
+msgid "ID номер"
+msgstr "ID number"
+
+#: .\account\templates\mydata.html:24
+#: .\account\templates\password\name_change.html:65
+msgid "Очередь"
+msgstr "Qeue"
+
+#: .\account\templates\password\name_change.html:44
+msgid "Изменить пароль"
+msgstr "Change password"
+
+#: .\account\templates\password\name_change.html:51
+msgid "Сохранить изминения"
+msgstr "Save password"
+
+#: .\account\templates\password\password_reset.html:12
+msgid ""
+"Забыли пароль?Введите вашу почту и username, мы вам отправим письмо с "
+"дальнейшими действиями "
+msgstr "Forgotten your password? Enter your email address below, and we'll email instructions for setting a new one."
+
+#: .\account\templates\password\password_reset.html:17
+msgid "Отправить письмо "
+msgstr "Send email"
+
+#: .\account\templates\registration.html:11
+msgid "Регистрация "
+msgstr "Registration"
+
+#: .\account\templates\registrchild.html:12
+msgid "Отправить"
+msgstr "Send"

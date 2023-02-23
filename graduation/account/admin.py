@@ -1,4 +1,5 @@
 from django.contrib import admin
+from parler.admin import TranslatableAdmin
 
 from .models import Child, Kindergarden, KIDCHOICE, User
 
@@ -13,7 +14,7 @@ class ChildInline(admin.TabularInline):
     model = Child
 
 @admin.register(Kindergarden)
-class KindergardenAdmin(admin.ModelAdmin):
+class KindergardenAdmin(TranslatableAdmin):
     inlines = [
         ChildInline
     ]
@@ -22,6 +23,7 @@ class KindergardenAdmin(admin.ModelAdmin):
 admin.site.register(Child)
 # admin.site.register(Kindergarden)
 admin.site.register(KIDCHOICE)
+# admin.site.register(Kindergarden,TranslatableAdmin)
 class UseAdmin(admin.ModelAdmin):
     list_display = ('last_name','address', 'phone', 'email')
 admin.site.register(User,UseAdmin)

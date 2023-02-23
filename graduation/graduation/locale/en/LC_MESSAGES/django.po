@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-03 23:17+0300\n"
+"POT-Creation-Date: 2023-02-20 13:53+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,34 +17,56 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: .\graduation\settings.py:113
+
+#: .\graduation\settings.py:129
 msgid "Russian"
-msgstr ""
+msgstr "Русский"
 
-#: .\graduation\settings.py:114
+#: .\graduation\settings.py:130
 msgid "English"
-msgstr ""
-
-#: .\graduation\templates\base.html:15
-msgid " в начало"
-msgstr "home"
-
-#: .\graduation\templates\base.html:16
-msgid " контакты"
-msgstr "contacts"
-
-#: .\graduation\templates\base.html:17
-msgid " учреждения"
-msgstr "institutions"
+msgstr "Английский"
 
 #: .\graduation\templates\base.html:18
-msgid "работа "
-msgstr "work"
+msgid "В начало"
+msgstr "Home"
 
-#: .\graduation\templates\base.html:26
+#: .\graduation\templates\base.html:20
+msgid " учреждения"
+msgstr "instituations"
+
+#: .\graduation\templates\base.html:22
+msgid "зарегистрировать ребенка "
+msgstr "register a child"
+
+#: .\graduation\templates\base.html:23
+msgid "Мои данные "
+msgstr "My data"
+
+#: .\graduation\templates\base.html:23
+msgid "выйти"
+msgstr "logout"
+
+#: .\graduation\templates\base.html:25
+msgid "регистрация "
+msgstr "registration"
+
+#: .\graduation\templates\base.html:25
+msgid "войти "
+msgstr "login"
+
+#: .\graduation\templates\base.html:33
+#, fuzzy
+#| msgid " учреждения"
+msgid "поиск учреждения "
+msgstr "instituations"
+
+#: .\graduation\templates\base.html:34
 msgid "поиск "
 msgstr "search"
 
-#: .\graduation\templates\base.html:41
-msgid "Change"
-msgstr ""
+#: .\graduation\templates\base.html:54
+msgid "Изменить"
+msgstr "Change"
+
+#~ msgid "Change"
+#~ msgstr "Изменить"

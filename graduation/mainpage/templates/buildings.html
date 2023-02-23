@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load crispy_forms_tags %}
 {% block building %}
 
@@ -7,27 +8,79 @@
       <div class="row gx-5">
         <div class="col">
 <form method = "get" >
-    {{myfilter.form }}
-    <button type="submit">Фильтр </button>
+    Name{{myfilter.form.name   }}
+    Area{{myfilter.form.area  }}
+    free_places{{myfilter.form.free_places   }}
+    {{myfilter.form.translations__addition   }}
+    <button type="submit">{%  trans 'Фильтр'  %} </button>
 
 <!--    {% for obj in myfilter.qs %}-->
 <!--        {{ obj.name }} - ${{ obj.address }}<br />-->
 <!--    {% endfor %}&ndash;&gt;-->
 
 </form>
-
-        {%for obj in myfilter.qs%}
-            {%if obj%}
-        <h3><a href="{{ obj.get_absolute_url  }}">{{ obj.name }}</a> - {{ obj.address }}  <a href="">{{'Web page'}}</a></h3><br />
-            {%else%}
+        {%if not myfilter.qs%}
             <h3>{{' NOT FOUND' }}</h3><br />
+        {%else%}
+
+            <table class="table">
+      <thead>
+
+        <tr>
+
+          <th scope="col" class="tabel_data">{% trans 'Название'%}</th>
+          <th scope="col" class="tabel_data">{% trans 'Адрес'%}</th>
+          <th scope="col" class="tabel_data">{% trans 'Район'%}</th>
+            <th scope="col" class="tabel_data">{% trans 'Телефон'%}</th>
+            <th scope="col" class="tabel_data">{% trans 'Очередь'%}</th>
+        </tr>
+      </thead>
+              <tbody class="table-group-divider">
+                {%for obj in myfilter.qs%}
+        <tr>
+
+            <td class="tabel_data"><a href="{{ obj.get_absolute_url  }}">{{obj.name}}</a></td>
+            <td class="tabel_data">{{obj.address}}</td>
+            <td class="tabel_data">{{obj.area}}</td>
+            <td class="tabel_data">+372-{{obj.phone_number}}</td>
+              <td class="tabel_data">{{obj.num_register_child}}</td>
+
+            {%endfor%}
+        </tr>
+    </tbody>
+    </table>
             {%endif%}
 
-        {%endfor%}
+
 
 {%else%}
+            {%if not object_list%}
+            <div class="container px-4">
+      <div class="row gx-5">
+        <div class="col2">
+            <thead>
+
+            <tr>
+                <h3>{%  trans 'Вы ввели не существующие имя. Пожалуйста,попробуйте еще раз.'  %}</h3>
+                <a href="{%url 'buildings'%}"><button>{%  trans 'Назад'  %}</button></a>
+            {%endif%}
+            {%if object_list%}
+     <table class="table">
+      <thead>
+
+        <tr>
+
+          <th scope="col" class="tabel_data">{% trans 'Название'%}</th>
+          <th scope="col" class="tabel_data">{% trans 'Адрес'%}</th>
+          <th scope="col" class="tabel_data">{% trans 'Район'%}</th>
+            <th scope="col" class="tabel_data">{% trans 'Телефон'%}</th>
+            <th scope="col" class="tabel_data">{% trans 'Очередь'%}</th>
+        </tr>
+      </thead>
+         <tbody class="table-group-divider">
     {%for obj in object_list%}
         {% include "search.html"%}
     {%endfor%}
+     {%endif%}
 {%endif%}
 {% endblock %}

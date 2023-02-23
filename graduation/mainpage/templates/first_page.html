@@ -5,39 +5,38 @@
 <main class="container_size">
       <div class="container_pick ">
         <h1 class="container_pick-titel">
-          Справочник <span> образовательных учреждений </span> <span> Таллинна</span> </span>
+          {% trans 'Справочник' %} <span> {% trans 'образовательных учреждений' %} </span> <span> {% trans 'Таллинна' %}</span> </span>
         </h1>
       </div>
 
       <div class="info">
         <div class="info_item">
-          <h3>Частные садики</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam cum nostrum reiciendis at autem, quidem optio voluptatum soluta ea dolores!</p>
+          <h3>{% trans 'Школы' %}</h3>
+          <p>{{ value1|truncatewords:15 }}</p>
+          <p><button ><a href='{% url "school"%}'>{% trans 'Читать' %}</a></button></p>
           <ul>
-            <li>{%trans "Таллинна"%}</li>
-            <li>{%trans "Таллинна"%}</li>
-            <li>{%trans "Таллинна"%}</li>
-            <li>{%trans "Таллинна"%}</li>
+            <li>{%trans " Поиск учреждения"%}</li>
+            <li>{%trans " Как поступить"%}</li>
+
           </ul>
         </div>
         <div class="info_item">
-          <h3>Государственные садики</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum nam rem non iure voluptatibus, esse cupiditate optio consectetur obcaecati odio, recusandae fugit enim sapiente, libero eum veritatis repellendus officiis officia.</p>
+          <h3>{% trans 'Cадики' %}</h3>
+          <p>{{ value2|truncatewords:15 }}</p>
+          <p><button ><a href='{% url "school"%}'>{% trans 'Читать' %}</a></button></p>
           <ul>
-            <li><a href="">username</a></li>
-            <li>Lorem ipsum dolor sit.</li>
-            <li>Lorem, ipsum.</li>
-            <li>Lorem ipsum dolor sit amet consectetur.</li>
+            <li><a href="{% url 'buildings'%}">{%trans "Поиск учреждения"%}</a></li>
+            <li>{%trans "Как подать заявление"%}</li>
+
           </ul>
         </div>
         <div class="info_item">
           <h3>Lorem how you </h3>
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, delectus.</p>
           <ul>
-            <li>Контакты</li>
-            <li><a href="{% url 'contact'%}">Связаться с нами</a></li>
-            <li>Lorem, ipsum.</li>
-            <li>Lorem ipsum dolor sit amet consectetur.</li>
+            <li>{% trans 'Контакты' %}</li>
+            <li><a href="{% url 'contact'%}">{%  trans 'Связаться с нами'  %}</a></li>
+
           </ul>
         </div>
 
