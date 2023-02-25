@@ -1,18 +1,41 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {%block detail%}
-<div class="container px-4">
-  <div class="row gx-5">
-    <div class="col2">
- {% if object.photo %}
-        <div><p><img class="img-article-left" src="{{object.photo.url}}"></p></div>
-        {% endif %}
-<h3>{{object.name}}</h3>
-<h3>{{object.address}}</h3>
-<h3>{{object.area}}</h3>
-        {%for ch in object.child_set.all%}
-        <h3>{{ch.name}}</h3>
-<!--        {%if object.pk == ch.pk%}-->
-<!--            <h3>{{ch.name}}</h3>-->
-<!--        {%endif%}-->
-        {%endfor%}
+<!--<div class="container px-4">-->
+<!--  <div class="row gx-5">-->
+<!--    <div class="col2">-->
+<!-- {% if object.photo %}-->
+<!--        <div><p><img class="img-article-left" src="{{object.photo.url}}"></p></div>-->
+<!--        {% endif %}-->
+<!--<h3>{{object.name}}</h3>-->
+<!--<h3>{{object.address}}</h3>-->
+<!--<h3>{{object.area}}</h3>-->
+<div class="container">
+      <div class="block">
+          {% if object.photo %}
+          <img class="img-article-left" src="{{object.photo.url}}">
+
+          {% endif %}
+        <div >
+          <h3><span>{% trans 'Детский садик:' %} </span>{{object.name}}</h3>
+          <h3><span>{% trans 'Адрес:' %} </span>{{object.address}}</h3>
+          <h3><span>{% trans 'Район:' %} </span>{{object.area}}</h3>
+         <h3><span>{% trans 'Телефон:' %} (+372) </span>{{object.phone_number}}</h3>
+            <h3><span>{% trans 'Кол-во зарегистрированных детей:' %} </span>{{object.num_register_child}}</h3>
+              <h3><span>{% trans 'Кол-во свободных мест:' %} </span>{{object.num_free_places}}</h3>
+            <h3><span>{% trans 'Дополнительные кружки:' %} </span></h3>
+            {% for v in object.addition.all %}
+            <h5>{{ v.choice }}</h5>
+    {% endfor %}
+
+        </div>
+      </div>
+    </div>
+
+<!--        {%for ch in object.child_set.all%}-->
+<!--        <h3>{{ch.name}}</h3>-->
+<!--&lt;!&ndash;        {%if object.pk == ch.pk%}&ndash;&gt;-->
+<!--&lt;!&ndash;            <h3>{{ch.name}}</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;        {%endif%}&ndash;&gt;-->
+<!--        {%endfor%}-->
 {%endblock%}

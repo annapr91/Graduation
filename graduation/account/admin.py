@@ -22,7 +22,7 @@ class KindergardenAdmin(TranslatableAdmin):
 
 admin.site.register(Child)
 # admin.site.register(Kindergarden)
-admin.site.register(KIDCHOICE)
+admin.site.register(KIDCHOICE,TranslatableAdmin)
 # admin.site.register(Kindergarden,TranslatableAdmin)
 class UseAdmin(admin.ModelAdmin):
     list_display = ('last_name','address', 'phone', 'email')

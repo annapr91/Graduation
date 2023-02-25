@@ -8,10 +8,10 @@
       <div class="row gx-5">
         <div class="col">
 <form method = "get" >
-    Name{{myfilter.form.name   }}
-    Area{{myfilter.form.area  }}
-    free_places{{myfilter.form.free_places   }}
-    {{myfilter.form.translations__addition   }}
+    {% trans 'Детский садик:' %}{{myfilter.form.name   }}
+    {% trans 'Район:' %}{{myfilter.form.area  }}
+    {% trans 'Дополнительные кружки:' %}{{myfilter.form.translations__addition   }}
+    {% trans 'Cвободные места:' %}{{myfilter.form.free_places   }}
     <button type="submit">{%  trans 'Фильтр'  %} </button>
 
 <!--    {% for obj in myfilter.qs %}-->
@@ -58,6 +58,7 @@
             <div class="container px-4">
       <div class="row gx-5">
         <div class="col2">
+
             <thead>
 
             <tr>
@@ -78,9 +79,11 @@
         </tr>
       </thead>
          <tbody class="table-group-divider">
-    {%for obj in object_list%}
-        {% include "search.html"%}
-    {%endfor%}
+        {%for obj in object_list%}
+            {% include "search.html"%}
+        {%endfor%}
+        </tbody>
+    </table>
      {%endif%}
 {%endif%}
 {% endblock %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-20 13:53+0300\n"
+"POT-Creation-Date: 2023-02-24 20:29+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,63 +50,88 @@ msgstr "Old password"
 msgid "Новый пароль"
 msgstr "New password"
 
-#: .\mainpage\templates\buildings.html:12
+#: .\mainpage\templates\buildings.html:15
 msgid "Фильтр"
-msgstr ""
+msgstr "Filter"
 
-#: .\mainpage\templates\buildings.html:36
+#: .\mainpage\templates\buildings.html:31
+#: .\mainpage\templates\buildings.html:74
+msgid "Название"
+msgstr "Name"
+
+#: .\mainpage\templates\buildings.html:32
+#: .\mainpage\templates\buildings.html:75
+msgid "Адрес"
+msgstr "Address"
+
+#: .\mainpage\templates\buildings.html:33
+#: .\mainpage\templates\buildings.html:76
+msgid "Район"
+msgstr "Area"
+
+#: .\mainpage\templates\buildings.html:34
+#: .\mainpage\templates\buildings.html:77
+msgid "Телефон"
+msgstr "Phone"
+
+#: .\mainpage\templates\buildings.html:35
+#: .\mainpage\templates\buildings.html:78
+msgid "Очередь"
+msgstr "Queue"
+
+#: .\mainpage\templates\buildings.html:65
 msgid "Вы ввели не существующие имя. Пожалуйста,попробуйте еще раз."
 msgstr "You have entered unkown name. Please,try one more time."
 
-#: .\mainpage\templates\buildings.html:37
+#: .\mainpage\templates\buildings.html:66
 msgid "Назад"
 msgstr "Back"
 
-#: .\mainpage\templates\first_page.html:8
+#: .\mainpage\templates\first_page.html:10
 msgid "Справочник"
 msgstr "Directory of "
 
-#: .\mainpage\templates\first_page.html:8
+#: .\mainpage\templates\first_page.html:10
 msgid "образовательных учреждений"
 msgstr "educational institutions"
 
-#: .\mainpage\templates\first_page.html:8
+#: .\mainpage\templates\first_page.html:10
 msgid "Таллинна"
 msgstr "in Tallinn"
 
-#: .\mainpage\templates\first_page.html:14
+#: .\mainpage\templates\first_page.html:16
 msgid "Школы"
 msgstr "Schools"
 
-#: .\mainpage\templates\first_page.html:16
-#: .\mainpage\templates\first_page.html:26
+#: .\mainpage\templates\first_page.html:18
+#: .\mainpage\templates\first_page.html:28
 msgid "Читать"
 msgstr "Read more"
 
-#: .\mainpage\templates\first_page.html:18
+#: .\mainpage\templates\first_page.html:20
 msgid " Поиск учреждения"
 msgstr "Search of school's name"
 
-#: .\mainpage\templates\first_page.html:19
+#: .\mainpage\templates\first_page.html:21
 msgid " Как поступить"
 msgstr "How to apply"
 
-#: .\mainpage\templates\first_page.html:24
+#: .\mainpage\templates\first_page.html:26
 msgid "Cадики"
 msgstr "Kindergartens"
 
-#: .\mainpage\templates\first_page.html:28
+#: .\mainpage\templates\first_page.html:30
 msgid "Поиск учреждения"
 msgstr "Search of kindergarten's name"
 
-#: .\mainpage\templates\first_page.html:29
+#: .\mainpage\templates\first_page.html:31
 msgid "Как подать заявление"
 msgstr "How to apply"
 
-#: .\mainpage\templates\first_page.html:37
+#: .\mainpage\templates\first_page.html:39
 msgid "Контакты"
 msgstr "Contacts"
 
-#: .\mainpage\templates\first_page.html:38
+#: .\mainpage\templates\first_page.html:40
 msgid "Связаться с нами"
 msgstr "Contact with us"

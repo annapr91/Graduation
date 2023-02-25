@@ -215,6 +215,15 @@ fieldset img {
   border-radius: 0.5rem;
   z-index: 11;
 }
+.container {
+  margin: auto;
+  max-width: 1170px;
+}
+.block {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
 .header__nav--hamburger .line-1,
 .header__nav--hamburger .line-2 {
   height: 0.2rem;

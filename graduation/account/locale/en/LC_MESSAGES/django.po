@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-20 13:53+0300\n"
+"POT-Creation-Date: 2023-02-24 23:23+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,27 +18,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\account\forms.py:13 .\account\forms.py:41 .\account\models.py:56
+#: .\account\forms.py:13 .\account\forms.py:41 .\account\models.py:59
 #: .\account\templates\mydata.html:8
-#: .\account\templates\password\name_change.html:32
-#: .\account\templates\password\name_change.html:61
+#: .\account\templates\password\name_change.html:36
+#: .\account\templates\password\name_change.html:83
 msgid "Имя"
 msgstr "Name"
 
 #: .\account\forms.py:14 .\account\forms.py:42 .\account\forms.py:108
 #: .\account\forms.py:109 .\account\templates\mydata.html:21
-#: .\account\templates\password\name_change.html:34
-#: .\account\templates\password\name_change.html:62
+#: .\account\templates\password\name_change.html:43
+#: .\account\templates\password\name_change.html:84
 msgid "Фамилия"
 msgstr "Surname"
 
 #: .\account\forms.py:15 .\account\forms.py:94
-#: .\account\templates\password\name_change.html:36
+#: .\account\templates\password\name_change.html:47
 msgid "Почта"
 msgstr "Email"
 
 #: .\account\forms.py:17 .\account\forms.py:85 .\account\forms.py:95
-#: .\account\templates\password\name_change.html:30
+#: .\account\templates\password\name_change.html:32
 msgid "Логин"
 msgstr "Login"
 
@@ -59,7 +59,7 @@ msgid "The name type should be str not int."
 msgstr ""
 
 #: .\account\forms.py:43 .\account\templates\mydata.html:23
-#: .\account\templates\password\name_change.html:64
+#: .\account\templates\password\name_change.html:86
 msgid "Детский сад"
 msgstr "Kindergarten"
 
@@ -79,7 +79,7 @@ msgstr "Your email"
 msgid "почта"
 msgstr "email"
 
-#: .\account\forms.py:112 .\account\templates\password\name_change.html:38
+#: .\account\forms.py:112 .\account\templates\password\name_change.html:54
 msgid "Телефон"
 msgstr "Phone"
 
@@ -87,8 +87,8 @@ msgstr "Phone"
 msgid "телефон"
 msgstr "phone"
 
-#: .\account\forms.py:114 .\account\models.py:57
-#: .\account\templates\password\name_change.html:40
+#: .\account\forms.py:114 .\account\models.py:60
+#: .\account\templates\password\name_change.html:58
 msgid "Адрес"
 msgstr "Address"
 
@@ -96,60 +96,87 @@ msgstr "Address"
 msgid "улица,дом/квартира"
 msgstr "street, house/appartment"
 
-#: .\account\models.py:53
-msgid "Свободные места"
-msgstr "Free places"
+#: .\account\models.py:56
+msgid "Места"
+msgstr "Availability of places"
 
-#: .\account\models.py:54
+#: .\account\models.py:57
 msgid "Район"
 msgstr "Area"
 
-#: .\account\models.py:58
+#: .\account\models.py:61
 msgid "Фото"
 msgstr "Photo"
 
-#: .\account\models.py:59
-#, fuzzy
-#| msgid "телефон"
+#: .\account\models.py:62
 msgid "Номер телефона"
 msgstr "phone"
 
-#: .\account\models.py:60
-#, fuzzy
-#| msgid "Свободные места"
+#: .\account\models.py:63
 msgid "Количество свободных мест"
 msgstr "Free places"
 
-#: .\account\models.py:61
+#: .\account\models.py:64
 msgid "Кол-во заргис. детей"
 msgstr "Number of registrated children"
 
-#: .\account\models.py:62
+#: .\account\models.py:65
 msgid "Доп. кружки"
 msgstr "Addition"
 
-#: .\account\models.py:106
+#: .\account\models.py:109
 msgid "Родители"
 msgstr "Parents"
 
-#: .\account\models.py:107
-#, fuzzy
-#| msgid "Детский сад"
-msgid "Детские сады"
+#: .\account\models.py:110
+msgid "Детский садик"
 msgstr "Kindergarten"
+
+#: .\account\templates\kindergarden_detail.html:20
+
+msgid "Детский садик:"
+msgstr "Kindergarten:"
+
+#: .\account\templates\kindergarden_detail.html:21
+
+msgid "Адрес:"
+msgstr "Address:"
+
+#: .\account\templates\kindergarden_detail.html:22
+
+msgid "Район:"
+msgstr "Area:"
+
+#: .\account\templates\kindergarden_detail.html:23
+
+msgid "Телефон:"
+msgstr "Phone:"
+
+#: .\account\templates\kindergarden_detail.html:24
+
+msgid "Кол-во зарегистрированных детей:"
+msgstr "Number of registrated children:"
+
+#: .\account\templates\kindergarden_detail.html:25
+
+msgid "Кол-во свободных мест:"
+msgstr "Free places :"
+
+#: .\account\templates\kindergarden_detail.html:26
+
+msgid "Дополнительные кружки:"
+msgstr "Addition:"
 
 #: .\account\templates\login.html:11
 msgid "Войти "
 msgstr "Login"
 
 #: .\account\templates\login.html:15
-#, fuzzy
-#| msgid "Изменить пароль"
 msgid "Забыли пароль? "
 msgstr "Change password"
 
 #: .\account\templates\mydata.html:15
-#: .\account\templates\password\name_change.html:55
+#: .\account\templates\password\name_change.html:77
 msgid "Мои дети"
 msgstr "My children"
 
@@ -158,20 +185,20 @@ msgid "ghfg"
 msgstr ""
 
 #: .\account\templates\mydata.html:22
-#: .\account\templates\password\name_change.html:63
+#: .\account\templates\password\name_change.html:85
 msgid "ID номер"
 msgstr "ID number"
 
 #: .\account\templates\mydata.html:24
-#: .\account\templates\password\name_change.html:65
+#: .\account\templates\password\name_change.html:87
 msgid "Очередь"
 msgstr "Qeue"
 
-#: .\account\templates\password\name_change.html:44
+#: .\account\templates\password\name_change.html:66
 msgid "Изменить пароль"
 msgstr "Change password"
 
-#: .\account\templates\password\name_change.html:51
+#: .\account\templates\password\name_change.html:73
 msgid "Сохранить изминения"
 msgstr "Save password"
 
@@ -179,7 +206,9 @@ msgstr "Save password"
 msgid ""
 "Забыли пароль?Введите вашу почту и username, мы вам отправим письмо с "
 "дальнейшими действиями "
-msgstr "Forgotten your password? Enter your email address below, and we'll email instructions for setting a new one."
+msgstr ""
+"Forgotten your password? Enter your email address below, and we'll email "
+"instructions for setting a new one."
 
 #: .\account\templates\password\password_reset.html:17
 msgid "Отправить письмо "
@@ -192,3 +221,6 @@ msgstr "Registration"
 #: .\account\templates\registrchild.html:12
 msgid "Отправить"
 msgstr "Send"
+
+#~ msgid "Свободные места"
+#~ msgstr "Free places"

@@ -16,7 +16,7 @@ from parler.models import TranslatableModel, TranslatedFields
 
 class User(AbstractUser):
     address = models.CharField(max_length=150,verbose_name='Адрес', blank=True)
-    phone = models.IntegerField(blank=True, null=True, verbose_name='Номер телефон')
+    phone = models.IntegerField(blank=True, null=True, verbose_name='Номер телефона')
     email = models.EmailField(blank=True,verbose_name='Имейл')
 
     def __str__(self):
@@ -28,8 +28,11 @@ class User(AbstractUser):
 
 
 
-class KIDCHOICE(models.Model):
-    choice=models.CharField(max_length=154, unique=True)
+class KIDCHOICE(TranslatableModel):
+    translations = TranslatedFields(
+        choice=models.CharField(max_length=154, unique=True)
+    )
+
 
 
     def __str__(self):
@@ -50,7 +53,7 @@ class Kindergarden(TranslatableModel):
                    ('Põhja-Tallinna', 'Põhja-Tallinna'),
                )
 
-    free_places = models.BooleanField(default=True, verbose_name=_('Свободные места'))
+    free_places = models.BooleanField(default=True, verbose_name=_('Места'))
     area = models.CharField(max_length=30, choices=AREA, verbose_name=_('Район'))
     translations = TranslatedFields(
         name=models.CharField(max_length=20, verbose_name=_('Имя')),
@@ -104,7 +107,7 @@ class Child(models.Model):
     surname = models.CharField(max_length=20)
     id_number = models.CharField(max_length=20)
     roditeli = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('Родители'))
-    det_sads = models.ForeignKey('Kindergarden', on_delete=models.CASCADE, verbose_name=_('Детские сады'))
+    det_sads = models.ForeignKey('Kindergarden', on_delete=models.CASCADE, verbose_name=_('Детский садик'))
     ochered = models.IntegerField(default=None, null=True)
 
     def __str__(self):
